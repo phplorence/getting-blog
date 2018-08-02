@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
-
 class HomeController extends Controller
 {
     /**
@@ -13,7 +11,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('web');
+        $this->middleware('auth');
     }
 
     /**
@@ -23,10 +21,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if(Auth::check())
-        {
-            return view('welcome');
-        }
         return view('home');
     }
 }

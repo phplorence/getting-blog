@@ -1,69 +1,84 @@
-@extends('layouts.app')
-
-@section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
-
-                <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('login') }}">
-                        {{ csrf_field() }}
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="{{URL::asset('images/favicon.ico')}}" type="image/ico"/>
+    <title>My Just For Fun</title>
+    <link href="{{URL::asset('vendors/bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{URL::asset('vendors/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+    <link href="{{URL::asset('css/custom.min.css')}}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i"
+          rel="stylesheet">
+</head>
+<body class="login">
+<div class="login_wrapper">
+    <div class="col-md-6 formLogin">
+        <h2>Login</h2>
+        <p>Don't have an account? Create your account, it takes less than a minute</p>
+        <form>
+            <div class="form-group has-feedback">
+                <input type="text" name="email" class="form-control" placeholder="Username">
+                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <input type="password" name="email" class="form-control" placeholder="Password">
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            </div>
+            <div class="row">
+                <div class="col-xs-7">
+                    <div class="checkbox">
+                        <label class="">
+                            <input type="checkbox">
+                            <div class="icheckbox_square-blue" aria-checked="false" aria-disabled="false"
+                                 style="position: relative;">
+                                <input type="checkbox" name="remember"
+                                       style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;">
+                                <ins class="iCheck-helper"
+                                     style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
                             </div>
+                            Remember Me
+                        </label>
+                    </div>
+                </div>
+                <div class="col-xs-5">
+                    <div class="checkbox">
+                        <div class="icheckbox_square-blue" aria-checked="false" aria-disabled="false"
+                             style="position: relative;">
+                            <input type="checkbox" name="remember"
+                                   style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;">
+                            <ins class="iCheck-helper"
+                                 style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
                         </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Login
-                                </button>
-
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    Forgot Your Password?
-                                </a>
-                            </div>
-                        </div>
-                    </form>
+                        Forgot Password?
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-5">
+                    <button type="submit" class="btn buttonLogin">LOGIN</button>
+                </div>
+            </div>
+        </form>
+        <div class="row">
+            <div class="col-xs-7">
+                <div class="checkbox">
+                    Or login with
+                </div>
+            </div>
+            <div class="col-xs-5">
+                <div class="checkbox">
+                    <a href="#" class="fa fa-facebook"></a>
+                    <a href="#" class="fa fa-twitter"></a>
                 </div>
             </div>
         </div>
     </div>
+    <div class="col-md-6">
+    </div>
 </div>
-@endsection
+</body>
+</html>
+https://www.uplabs.com/posts/login-icons
